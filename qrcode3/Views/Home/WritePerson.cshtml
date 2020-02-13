@@ -1,0 +1,42 @@
+﻿@model qrcode3.TPerson
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form action="/Home/WritePerson" method="post">
+    <table cellpadding="7" align="center">
+        <tr>
+            <td>id (не менять для корректной работы)</td>
+            <td>Фамилия</td>
+            <td>Имя</td>
+            <td>Отчество</td>
+            <td>Номер телефона</td>
+            <td>Email</td>
+        </tr>
+        <tr>
+            <td>
+                <input id="id" name="id" type="password" required value="@Model.IdPerson" />
+            </td>
+            <td>
+                <input id="Surname" name="Surname" type="text" required value="@Model.Surname" />
+            </td>
+            <td>
+                <input id="Name1" name="Name1" type="text" value="@Model.Name1" />
+            </td>
+            <td>
+                <input id="Name2" name="Name2" type="text" value="@Model.Name2" />
+            </td>
+            <td>
+                <input id="PhoneP" name="PhoneP" type="text" value="@Model.PhonePerson" />
+            </td>
+            <td>
+                <input id="EmailP" name="EmailP" type="text" value="@Model.EmailP" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="6">
+                <input type="submit" name="sub1" value="Сохранить" />
+            </td>
+        </tr>
+    </table>
+</form>

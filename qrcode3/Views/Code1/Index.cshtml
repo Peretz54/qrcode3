@@ -1,0 +1,26 @@
+﻿@model TRoom
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View</title>
+</head>
+<body>
+    @{ var item = Model;
+
+        <div>
+            <h1>Аудитория: @item.Pavilion@item.NumberRoom</h1>
+        </div>
+        <div>
+            <h3>@item.ShortDesc</h3>
+            <p>@item.LongDesc</p>
+        </div>
+    }
+</body>
+</html>

@@ -1,0 +1,25 @@
+﻿@model qrcode3.Models.Room_number
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+    <div class="text-center">
+        @using (Html.BeginForm("Home", "Home", FormMethod.Post))
+        {
+            <p>
+                <label>Корпус</label><br />
+                @Html.TextBox("Corp")
+            </p>
+            <p>
+                <label>Номер аудитории</label><br />
+                @Html.TextBox("Number")
+            </p>
+         
+            <p>
+                <input type="submit" name="sub1" value="Далее" />
+            </p>
+            <p>
+                <!--         <input type="submit" name="sub2" value="Сгенерировать QRCODE" /> -->
+            </p>
+        }
+    </div>

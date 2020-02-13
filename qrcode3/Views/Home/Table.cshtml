@@ -1,0 +1,69 @@
+﻿@model List<RoomFull>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<a href="~/Home/WriteRoom">Добавить новую аудиторию</a>
+<form action="/Home/Table" method="post">
+
+    <table cellpadding="7" align="left">
+        <tr>
+            <td>Корпус</td>
+            <td>Номер аудитории</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <input id="Corp" name="Corp" type="text" pattern="[А-Я]" value="" />
+            </td>
+            <td>
+                <input id="Number" name="Number" type="text" pattern="[0-9]{3,4}" value="" />
+            </td>
+            <td>
+                <input type="submit" name="sub1" value="Найти" />
+            </td>
+        </tr>
+        </table>
+        <table cellpadding="7">
+            <tr>
+                <td>Комната</td>
+                <td>Название</td>
+                <td>Длинное описание</td>
+                <td>Телефон</td>
+                <td>Email</td>
+                <td>Преподаватель</td>
+                <td></td>
+                <td>Отношение</td>
+            </tr>
+            @foreach (var a in Model)
+            {
+                <tr>
+                    <td>@a.RoomInfo.Pavilion@a.RoomInfo.NumberRoom</td>
+                    <td>@a.RoomInfo.ShortDesc</td>
+                    <td>@a.RoomInfo.LongDesc</td>
+                    <td>@a.RoomInfo.PhoneNumber</td>
+                    <td>@a.RoomInfo.Email</td>
+                    <td>@a.PersonInfo</td>
+
+                    <td>
+                        <a href="~/Home/WriteRoom?corp=@a.RoomInfo.Pavilion&n=@a.RoomInfo.NumberRoom">Edit</a>
+                        /
+                        <a href="~/Home/DeleteRoom?corp=@a.RoomInfo.Pavilion&n=@a.RoomInfo.NumberRoom" onclick="return confirm('Вы точно хотите удалить аудиторию @a.RoomInfo.Pavilion@a.RoomInfo.NumberRoom?')">Delete</a>
+                    </td>
+                    <td>
+                        <a href="~/Relation/RelationRP?corp=@a.RoomInfo.Pavilion&n=@a.RoomInfo.NumberRoom">New</a>
+                        @if (a.PersonInfo != "" && a.PersonInfo != null)
+                        {
+                            <div>
+                                /
+                                <a href="~/Relation/DeleteRelationRP?corp=@a.RoomInfo.Pavilion&n=@a.RoomInfo.NumberRoom&person=@a.IDPerson" onclick="return confirm('Вы точно хотите убрать связь @a.RoomInfo.Pavilion@a.RoomInfo.NumberRoom <-> @a.PersonInfo ?')">Del_Rel</a>
+                            </div>
+                        }
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+</form>
+
+    <!--<a href="delete_action.php?id=$id" onclick="return confirm('Вы точно хотите удалить модель из списка?')">Удалить</a>-->

@@ -1,0 +1,69 @@
+﻿@model List<TPerson>
+@{
+    ViewData["Title"] = "Home Page";
+}
+    <a href="~/Home/WritePerson">Добавить новую персону</a>
+    <form action="/Home/PersonsTable" method="post">
+        <table>
+            <tr>
+                <td>
+                    <table cellpadding="7" align="left">
+                        <tr>
+                            <td>Фамилия</td>
+                            <td>Имя</td>
+                            <td>Отчество</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input id="Surname" name="Surname" type="text" value="" />
+                            </td>
+                            <td>
+                                <input id="Name1" name="Name1" type="text" value="" />
+                            </td>
+                            <td>
+                                <input id="Name2" name="Name2" type="text" value="" />
+                            </td>
+                            <td>
+                                <input type="submit" name="sub1" value="Найти" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table cellpadding="7" align="left">
+                        <tr>
+                            <td>Фамилия</td>
+                            <td>Имя</td>
+                            <td>Отчество</td>
+                            <td>Телефон</td>
+                            <td>Email</td>
+                        </tr>
+                        @foreach (var a in Model)
+                        {
+                            <tr>
+                                <td>@a.Surname</td>
+                                <td>@a.Name1</td>
+                                <td>@a.Name2</td>
+                                <td>@a.PhonePerson</td>
+                                <td>@a.EmailP</td>
+
+                                <td>
+                                    <a href="~/Home/WritePerson?id=@a.IdPerson">Edit</a>
+                                    /
+                                    <a href="~/Home/DeletePerson?id=@a.IdPerson" onclick="return confirm('Вы точно хотите удалить информацию о @a.Surname @a.Name1 @a.Name2?')">Delete</a>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                    <br />
+                </td>
+            </tr>
+        </table>
+ 
+        
+        
+    </form>

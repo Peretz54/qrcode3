@@ -1,0 +1,44 @@
+﻿@model ForRltn
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+    <form action="/Relation/RelationRP" method="post">
+        <table cellpadding="7" align="center">
+            <tr>
+                <td>Корпус</td>
+                <td>Номер аудитории</td>
+            </tr>
+            <tr>
+                <td>
+                    <input id="Corp" name="Corp" type="text" required pattern="[А-Я]" value=@Model.Pavilion />
+                </td>
+                <td>
+                    <input id="Number" name="Number" type="text" required pattern="[0-9]{3,4}" value=@Model.Number ) />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="text-center">
+                        Человек
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <select name="person">
+                        @{ foreach (var a in Model.Persons)
+                            {
+                                <option value=@a.IdPerson>@a.Surname @a.Name1 @a.Name2</option>
+                            }
+                        }
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" name="sub1" value="Сохранить" />
+                </td>
+            </tr>
+        </table>
+    </form>

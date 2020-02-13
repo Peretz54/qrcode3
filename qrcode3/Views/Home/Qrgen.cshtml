@@ -1,0 +1,48 @@
+﻿@using System.Drawing
+@model qrcode3.Models.QrGen
+@{
+    ViewData["Title"] = "Home Page";
+}
+<form action="/Home/QrGen" method="post">
+    <div class="text-center">
+        <table cellpadding="7" align="center">
+            <tr>
+                <td>Корпус</td>
+                <td>Номер аудитории</td>
+            </tr>
+            <tr>
+                <td>
+                    <input id="Corp1" name="Corp1" type="text"  pattern="[А-Я]" value=@Model.Pavilion />
+                </td>
+                <td>
+                    <input id="Number1" name="Number1" type="text"  pattern="[0-9]{3,4}" value=@Model.Number />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="text-center">
+                        Содержание qr кода
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <textarea id="Letter1" name="Letter1" cols="46">@Model.Letter</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" name="sub1" value="Сгенерировать" />
+                </td>
+            </tr>
+        </table>
+        @{
+            var base64 = Convert.ToBase64String(Model.Img);
+            var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+        }
+        <p>
+            <!--Аудитория @Model.Pavilion@Model.Number-->
+        </p>
+        <img src='@imgsrc' height="700" width="700" />
+    </div>
+</form>

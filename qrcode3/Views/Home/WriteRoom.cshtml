@@ -1,0 +1,154 @@
+﻿@model qrcode3.TRoom
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+    <form action="/Home/WriteRoom" method="post">
+        <table cellpadding="7"  align="center">
+            <tr>
+                <td>Корпус</td>
+                <td>Номер аудитории</td>
+            </tr>
+            <tr>
+                <td>
+                    <input id="Corp" name="Corp" type="text" required pattern="[А-Я]" value="@Model.Pavilion" />
+                </td>
+                <td>
+                    @{
+                        if (@Model.NumberRoom == 0)
+                        {  <input id="Number" name="Number" type="text" required pattern="[0-9]{3,4}" value="" />}
+                        else
+                        {   <input id="Number" name="Number" type="text" required pattern="[0-9]{3,4}" value="@Model.NumberRoom" />}
+                    }
+
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="text-center">
+                        Описание
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input id="ShortDesc" name="ShortDesc" type="text" size="46" value="@Model.ShortDesc" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="text-center">
+                        Название
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <textarea id="LongDesc" name="LongDesc" cols="46">@Model.LongDesc</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>Телефон</td>
+                <td>Email</td>
+            </tr>
+            <tr>
+                <td>
+                    <input id="Phone" name="Phone" type="text" value="@Model.PhoneNumber" />
+                </td>
+                <td>
+                    <input id="Email" name="Email" type="text" value="@Model.Email" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" name="sub1" value="Сохранить" />
+                </td>
+            </tr>
+        </table>
+    </form>
+<!--        @using (Html.BeginForm("WriteRoom", "Home", FormMethod.Post))
+        {
+            <table cellpadding="7" class="text-center">
+                <tr>
+                    <td>Корпус</td>
+                    <td>Номер аудитории</td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.TextBox("Corp", Model.Pavilion)
+                    </td>
+                    <td>
+                        @Html.TextBox("Number", Model.NumberRoom)
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="text-center">
+                            Описание
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        @Html.TextBox("ShortDesc", Model.ShortDesc)
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="text-center">
+                            Название
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        @Html.TextArea("LongDesk", Model.LongDesc)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Телефон</td>
+                    <td>Email</td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.TextBox("Phone", Model.PhoneNumber)
+                    </td>
+                    <td>
+                        @Html.TextBox("Email", Model.Email)
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" name="sub1" value="Сохранить" />
+                    </td>
+                </tr>
+            </table>
+            <!--           <p>
+                        <label>Корпус</label><br />
+                        @Html.TextBox("Corp", Model.Pavilion)
+                    </p>
+                    <p>
+                        <label>Номер аудитории</label><br />
+                        @Html.TextBox("Number", Model.NumberRoom)
+                    </p>
+                    <p>
+                        <label>Название</label><br />
+                        @Html.TextBox("ShortDesc", Model.ShortDesc)
+                    </p>
+                    <p>
+                        <label>Описание</label><br />
+                        @Html.TextArea("LongDesk", Model.LongDesc)
+                    </p>
+                    <p>
+                        <label>Телефон</label><br />
+                        @Html.TextBox("Phone", Model.PhoneNumber)
+                    </p>
+                    <p>
+                        <label>Email</label><br />
+                        @Html.TextBox("Email", Model.Email)
+                    </p>
+        -->
+
+
+        }
+
